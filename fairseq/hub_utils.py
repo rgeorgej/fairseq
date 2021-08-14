@@ -98,6 +98,8 @@ class GeneratorHubInterface(nn.Module):
 
         # optimize model for generation
         for model in self.models:
+            if(args.fp16) :
+                model.half()
             model.prepare_for_inference_(cfg)
 
         # Load alignment dictionary for unknown word replacement
